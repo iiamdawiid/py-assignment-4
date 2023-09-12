@@ -1,0 +1,28 @@
+# Exercise 1 
+places = [" ","Argentina", " ", "San Diego","","  ","","Boston","New York"]
+
+result = list(filter(lambda word: len(word.strip()) > 0, places))
+print(result)
+
+#Exercise 2
+author = ["Joel Carter", "Victor aNisimov", "Andrew P. Garfield","David hassELHOFF","Gary A.J. Bernstein"]
+author.sort(key=lambda name: name.split()[-1].lower())
+print(author)
+
+#Exercise 3
+places = [('Nashua',32),("Boston",12),("Los Angeles",44),("Miami",29)]
+result = list(map(lambda temp: (temp[0], (9/5) * temp[1] + 32), places))
+print(result)
+
+#Exercise 4
+def fib(number):
+    if number == 0:
+        return 0
+    elif number == 1:
+        return 1
+    elif number >= 2:
+        return fib(number - 1) + fib(number - 2)
+
+
+for n in range(1, 11):
+    print(f'Iteration {n}:', fib(n))
