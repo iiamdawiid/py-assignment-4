@@ -15,6 +15,10 @@ result = list(map(lambda temp: (temp[0], (9/5) * temp[1] + 32), places))
 print(result)
 
 #Exercise 4
+
+# first solution - fine when small number is used as an argument.
+# when big number is passed then function slows down a lot with 
+# each additional iteration 
 def fib(number):
     if number == 0:
         return 0
@@ -24,5 +28,30 @@ def fib(number):
         return fib(number - 1) + fib(number - 2)
 
 
-for n in range(1, 11):
+for n in range(1, 51):
+    print(f'Iteration {n}:', fib(n))
+
+# second better solution I found with help of google
+# much faster and better when high numbers are passed in 
+
+# will store recent function calls
+fibonacci_cache = {}
+
+def fib(number):
+    # if cached value exists, return it 
+    if number in fibonacci_cache:
+        return fibonacci_cache[number]
+    elif number == 1:
+        value = 1
+    elif number == 2:
+        value = 1
+    elif number > 2:
+        value = fib(n-1) + fib(n-2)
+
+    # cache the value then return 
+    fibonacci_cache[number] = value
+    return value 
+
+
+for n in range(1, 1001):
     print(f'Iteration {n}:', fib(n))
